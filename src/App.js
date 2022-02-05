@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap";
+import Cards from "./components/cards/Cards";
+import Filters from "./components/filters/Filters";
 
 function App() {
+
+  const [pageNumber, setPageNumber] = useState(1)
+  let api =  `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+    <h1 className="text-center ubuntu my-4">Rick & Morty <span className="text-primary">WiKi</span></h1>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-3">
+            <Filters />
+          </div>
+          <div className="col-md-8">
+            <div className="row">
+            <Cards />
+            <Cards />
+            <Cards />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
