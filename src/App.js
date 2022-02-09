@@ -5,8 +5,28 @@ import Cards from "./components/cards/Cards";
 import Filters from "./components/filters/Filters";
 import Pagination from "./components/pagination/Pagination";
 import Search from "./components/search/Search";
+import Navbar from "./components/navbar/Navbar";
+
+
+import  {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Episodes  from "./pages/Episodes";
+import Location from "./pages/Location";
 
 function App() {
+  return (<Router>
+    <div className="App">
+    <Navbar />
+    </div>
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/Episodes" element={<Episodes />} />
+      <Route path="/Location" element={<Location />} />
+    </Routes>
+  </Router>)
+}
+
+
+const Home = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [fetchedData, updateFetchedData] = useState([]);
   const [search, setSearch] = useState("");
@@ -31,9 +51,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="text-center ubuntu my-4">
-        Rick & Morty <span className="text-primary">WiKi</span>
-      </h1>
+      
+      
       <Search setPageNumber={setPageNumber} setSearch={setSearch} />
       <div className="container">
         <div className="row">
