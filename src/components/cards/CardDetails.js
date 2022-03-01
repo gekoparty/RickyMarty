@@ -6,7 +6,6 @@ const CardDetails = () => {
   const [fetchedData, updateFetchedData] = useState([]);
   let { name, image, location, origin, gender, species, status, type } =
     fetchedData;
-  console.log(fetchedData);
 
   let api = `https://rickandmortyapi.com/api/character/${id}`;
 

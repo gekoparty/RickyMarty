@@ -8,7 +8,6 @@ const Pagination = ({ info, pageNumber, setPageNumber }) => {
     const maxPages = info?.pages;
     const [width, setWidth] = useState(window.innerWidth);
     
-    console.log(width)
     const updateDimension = () => {
       setWidth(window.innerWidth)
     }
@@ -23,7 +22,7 @@ const Pagination = ({ info, pageNumber, setPageNumber }) => {
 
   return (
     <>
-    <style jsx>
+    <style jsx="true">
       {
         `
         @media (max-width: 768px) {
