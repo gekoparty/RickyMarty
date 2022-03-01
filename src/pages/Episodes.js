@@ -6,14 +6,21 @@ const Episodes = () => {
   const [id, setId] = useState(1);
   const [info, setInfo] = useState([]);
   const [results, setResults] = useState([]);
+  const [pages, setPages] = useState([]);
   let { air_date, name } = info;
 
-  let api = `https://rickandmortyapi.com/api/episode/${id}`;
+  const countApi = "https://rickandmortyapi.com/api/episode/"
+  const api = `https://rickandmortyapi.com/api/episode/${id}`;
 
   useEffect(() => {
     (async function () {
       let data = await fetch(api).then((res) => res.json());
       setInfo(data);
+
+      let numPages = await fetch(countApi).then((res) => res.json());
+      let {info: allinfo} = numPages;
+      let{count} = allinfo
+      setPages(count);
 
       let a = await Promise.all(
         data.characters.map((x) => {
@@ -37,14 +44,14 @@ const Episodes = () => {
         </h5>
       </div>
       <div className="row">
-        <div className="col-3">
+        <div className="col-lg-3 col-12">
           <h4 className="text-center mb-4">Velg Episode</h4>
-          <InputGroup setId={setId} name="Episode" total={51} />
+          <InputGroup setId={setId} name="Episode" total={pages} />
         </div>
 
-        <div className="col-8">
+        <div className="col-lg-8 col-12">
           <div className="row">
-            <Cards results={results} />
+            <Cards page="/Episodes/" results={results} />
           </div>
         </div>
       </div>
