@@ -5,7 +5,7 @@ import Status from "./categories/Status";
 
 const Filters = ({setStatus, setPageNumber, setGender, setSpecies}) => {
 
-  const clear = () => {
+   let clear = () => {
     setStatus('');
     setPageNumber(1);
     setGender('');
